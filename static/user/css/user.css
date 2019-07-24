@@ -1,0 +1,148 @@
+#top{
+    margin-top: 20px;
+
+    width: 1000px;
+    height: 80px;
+
+    background-color: white;
+}
+#img{
+    float: left;
+}
+#text{
+    float: left;
+    margin-left: 20px;
+    padding:10px;
+}
+#span2{
+    font-size: smaller
+}
+
+
+#middle{
+    margin-top: 50px;
+    width: 1000px;
+    height: 50px;
+}
+#middle li{
+    float: left;
+    text-align: center;
+
+    width: 100px;
+    height: 50px;
+
+    list-style-type: none;
+    background-color: white;
+}
+#middle a{
+    line-height: 50px;
+
+    width: 80px;
+    height: 50px;
+
+    text-decoration: none;
+    color: black;
+
+}
+/*#middle li:hover{*/
+    /*color: white;*/
+    /*background-color: red;*/
+/*}*/
+
+#bottom{
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    background-color: white;
+}
+
+#menu_content{
+    margin-top: 30px;
+    background-color: #fae8c8;
+    width: 1000px;
+    /* height: 900px; */
+}
+#content_title{
+    width: 1000px;
+    height: 50px;
+}
+#content_main{
+    width: 1000px;
+}
+
+
+#content_title #lable{
+    float: right;
+    line-height: 50px;
+}
+#content_title label a{
+    margin-right: 5px;
+    text-decoration: none;
+    color: red;
+}
+#content_main>div{
+    background-color: white;
+    height: 246px;
+    width: 246px;
+    margin-top: 20px;
+    display: inline-block;
+    vertical-align: top;
+    text-align: center;
+    padding-bottom: 2px;
+}
+.content .lable1 a{
+    font-size: smaller;
+    color: red;
+    text-decoration: none;
+}
+.content .lable2 a{
+    margin-top: 2px;
+    text-decoration: none;
+    color: black;
+}
+
+#menu_content #page{
+    width: 1000px;
+    height: 50px;
+    margin-top: 20px;
+
+    background-color: #fae8c8;
+
+    display:flex;
+    /*justify-content:center;*/
+    /*align_items:center;*/
+
+}
+#page ul{
+
+    margin: 0px auto;
+    text-align: center;
+}
+#page ul li{
+    float: left;
+    margin-right: 2px;
+
+    background-color: #f5f5f5;
+    list-style-type: none;
+}
+#page .a1{
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+
+}
+#page .a2{
+    width: 80px;
+    height: 50px;
+
+    line-height: 50px;
+}
+#page a{
+    text-decoration: none;
+    color: black;
+}
+#resultNone{
+    width: 960px;
+    height: 400px;
+    background-color: yellow;
+}

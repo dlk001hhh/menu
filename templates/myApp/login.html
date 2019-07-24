@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+
+  <link rel="stylesheet" type="text/css" href="{% static 'user/css/login.css' %}"/>
+</head>
+<body>
+  <div id="login">
+    <div id="log_nav">
+      <img src="/media/img/123.jpeg/" width="500px" height="80px">
+    </div>
+    <div id="log_form">
+      <form action="" method="POST">
+        {% csrf_token %}
+        <ul>
+          <li class="li1">
+            <span class="name">用户名：</span>
+            <input class="input1" type="text" name="username" value={{ username }} >
+          </li>
+          <li class="li1">
+            <span class="name">密码：</span>
+            <input class="input1" type="password" name="password" placeholder="请输入用户密码">          </li>
+          <li class="li2">
+            <input type="checkbox" name="remember" {{ checked }}/>
+            <small><small>记住用户名</small></small>
+            <a href="#">忘记密码</a>
+          </li>
+          <li class="li3">
+            <input class="submit" type="submit" value="登录">
+            <a class="goRegister" href="/register">去注册>></a>
+          </li>
+          <h5>{{ errmsg }}</h5>
+        </ul>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

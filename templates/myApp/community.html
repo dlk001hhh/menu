@@ -1,0 +1,91 @@
+{% extends 'myApp/base1.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    {% block cssjs %}
+            <link rel="stylesheet" type="text/css" href="{% static 'community/css/community.css' %}" />
+    {% endblock cssjs %}
+</head>
+<body>
+
+
+    {% block aside %}
+        <div id="community">
+            <div class="user_info">
+                <div class="user">
+                    <a href="#"><img src="{{ user1.img.url }}" width="100px" height="100px"></a>
+                    <a href="#">{{ user1.name }}</a>
+                </div>
+            </div>
+            {% for dishObj in dish1 %}
+                <div class="user_create">
+                    <div class="create">
+                        <a href="#"><img src="{{dishObj.dish.img.url}}" width="150px" height="150px"></a>
+                        <a href="#">{{ dishObj.dish.name }}</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div id="community">
+            <div class="user_info">
+                <div class="user">
+                    <a href="#"><img src="{{ user2.img.url }}" width="100px" height="100px"></a>
+                    <a href="#">{{ user2.name }}</a>
+                </div>
+            </div>
+            {% for dishObj in dish2 %}
+                <div class="user_create">
+                    <div class="create">
+                        <a href="#"><img src="{{dishObj.dish.img.url}}" width="150px" height="150px"></a>
+                        <a href="#">{{ dishObj.dish.name }}</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div id="community">
+            <div class="user_info">
+                <div class="user">
+                    <a href="#"><img src="{{ user3.img.url }}" width="100px" height="100px"></a>
+                    <a href="#">{{ user3.name }}</a>
+                </div>
+            </div>
+            {% for dishObj in dish3 %}
+                <div class="user_create">
+                    <div class="create">
+                        <a href="#"><img src="{{dishObj.dish.img.url}}" width="150px" height="150px"></a>
+                        <a href="#">{{ dishObj.dish.name }}</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div id="community">
+            <div class="user_info">
+                <div class="user">
+                    <a href="#"><img src="{{ user4.img.url }}" width="100px" height="100px"></a>
+                    <a href="#">{{ user4.name }}</a>
+                </div>
+            </div>
+            {% for dishObj in dish4 %}
+                <div class="user_create">
+                    <div class="create">
+                        <a href="/dish/{{ dishObj.id }}"><img src="{{dishObj.dish.img.url}}" width="150px" height="150px"></a>
+                        <a href="/dish/{{ dishObj.id }}">{{ dishObj.dish.name }}</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+
+
+    {% endblock aside %}
+</body>
+</html>
+

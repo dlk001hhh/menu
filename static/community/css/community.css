@@ -1,0 +1,42 @@
+#community{
+    width: 1000px;
+    height: 200px;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    border: 1px solid #fdf6f6;
+    background-color: white;
+}
+#community .user_info{
+    float: left;
+    width: 200px;
+    height: 200px;
+    background-color: #fdf6f6;
+}
+#community .user{
+    width: 100px;
+    height: 120px;
+    margin-top: 40px;
+    margin-left: 50px;
+    text-align: center;
+}
+#community .user a{
+    text-decoration: none;
+    color: #c90000;
+}
+#community .user_create{
+    float: left;
+    width: 200px;
+    height: 200px;
+}
+#community .create{
+    width: 150px;
+    height: 180px;
+    margin-top: 10px;
+    margin-left: 25px;
+    text-align: center;
+    background-color: #c90000;
+}
+#community .create a{
+    text-decoration: none;
+    color: white;
+}

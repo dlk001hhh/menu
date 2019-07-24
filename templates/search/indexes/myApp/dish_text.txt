@@ -1,0 +1,4 @@
+{{object.name}}
+{{object.descs}}
+{{object.details}}
+{{object.auxi.}}

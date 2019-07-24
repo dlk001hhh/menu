@@ -1,0 +1,49 @@
+{% extends 'myApp/base1.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    {% block cssjs %}
+            <link rel="stylesheet" type="text/css" href="{% static 'menu/css/menu.css' %}" />
+    {% endblock cssjs %}
+
+    {% block ingrecss %}
+
+    {% endblock %}
+</head>
+<body>
+
+
+    {% block aside %}
+        <div id="top">
+            <div id="img">
+                <img src='../img/2.jpg' alt="猪肉" width="80px" height="80px">
+            </div>
+            <div id="text">
+                <span id="span1">猪肉</span>
+                <br>
+                <span id="span2">为你介绍猪肉的技巧和营养功效，有122种做法供你参考，同时提供购买需求</span>
+            </div>
+        </div>
+        <div id="middle">
+            <ul>
+
+                <li><a href="/ingre/price/{{ ingre.name }}">{{ ingre.name }}的购买</a></li>
+                <li><a href="/ingre/show/{{ ingre.name }}">{{ ingre.name }}的做法</a></li>
+                <li><a href="/ingre/descs/{{ ingre.name }}">选购技巧</a></li>
+                <li><a href="/ingre/details/{{ ingre.name }}">营养功效</a></li>
+
+            </ul>
+        </div>
+        <div id="bottom">
+            {% block ingre %}
+            {% endblock %}
+        </div>
+
+    {% endblock aside %}
+</body>
+</html>

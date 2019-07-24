@@ -1,0 +1,190 @@
+#top{
+    margin-top: 20px;
+
+    width: 1000px;
+    height: 80px;
+
+    background-color: white;
+}
+#img{
+    float: left;
+}
+#text{
+    float: left;
+    margin-left: 20px;
+    padding:10px;
+}
+#span2{
+    font-size: smaller
+}
+
+
+#middle{
+    margin-top: 50px;
+    width: 1000px;
+    height: 50px;
+}
+#middle li{
+    float: left;
+    text-align: center;
+
+    width: 100px;
+    height: 50px;
+
+    list-style-type: none;
+    background-color: white;
+}
+#middle a{
+    line-height: 50px;
+
+    width: 80px;
+    height: 50px;
+
+    text-decoration: none;
+    color: black;
+
+}
+#middle li:hover{
+    color: white;
+    background-color: red;
+}
+
+#bottom{
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    background-color: white;
+}
+
+
+
+
+#price{
+    width: 1000px;
+    height: 250px;
+
+    background-color: #fdf6f6;
+}
+#left{
+    float: left;
+}
+#right{
+    float: left;
+
+    width: 730px;
+    height: 230px;
+    padding: 10px;
+}
+#right li{
+    width: 710px;
+    height: 70px;
+    padding-left: 10px;
+    padding-right: 10px;
+
+    list-style-type: none;
+    background-color: white;
+}
+#right .li1{
+    margin-bottom: 10px;
+}
+#right label{
+    line-height: 70px;
+
+    width: 50%;
+    float: left;
+}
+#count_title{
+    float: left;
+    height: 70px;
+    width: 50px;
+    line-height: 70px;
+}
+#count_content{
+    float: left;
+    height: 70px;
+    width: 80px;
+    text-align: center;
+}
+#count_content input{
+    float: left;
+    width: 46px;
+    height: 68px;
+    border: 1px solid #666;
+    text-align: center;
+}
+#count_content a{
+    float: left;
+    width: 27px;
+    height: 32px;
+    border: 1px solid #666;
+    margin-left: 1px;
+    line-height: 35px;
+
+    text-decoration: none;
+    color: black;
+}
+#count_content .add{
+    margin-bottom: 1px;
+}
+#count_content .minus{
+    margin-top: 1px;
+}
+#cart_add{
+    float: right;
+    height: 40px;
+    width: 150px;
+    margin-top: 15px;
+    margin-right: 200px;
+
+    text-align: center;
+    line-height: 40px;
+    background-color: #c90000;
+
+}
+#cart_add a{
+    text-decoration: none;
+    color: white;
+    background-color: #c90000;
+}
+
+
+#comment{
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #fdf6f6;
+}
+.commentShow{
+    position: relative;
+    margin-top: 30px;
+}
+.commentImg{
+    width: 100px;
+    display: inline-block;
+    vertical-align: top;
+    text-align: center;
+}
+.commentImg a{
+    text-decoration: none;
+    color: black;
+    font-size: smaller;
+}
+.commentText{
+    width: 800px;
+    display: inline-block;
+    vertical-align: top;
+    background-color: white;
+}
+.commentText p{
+    text-indent: 30px;
+    padding: 10px;
+}
+.commentText span{
+    position: relative;
+    bottom: 0px;
+    left: 645px;
+    font-size: smaller;
+    color: #666;
+}
+
+
+

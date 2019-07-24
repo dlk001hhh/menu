@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+
+  <!-- <link rel="stylesheet" type="text/css" href="..\css\base.css" /> -->
+
+  <link rel="stylesheet" type="text/css" href="{% static 'user/css/register.css' %}"/>
+</head>
+<body>
+  <div id="register">
+    <div id="reg_nav">
+      <img src="/media/img/123.jpeg/" width="500px" height="80px">
+    </div>
+    <div id="reg_form">
+      <form action="" method="POST">
+        {% csrf_token %}
+        <ul>
+          <li>
+            <span class="name">用户名：</span>
+            <input class="input1" type="text" name="username">
+{#            <span class="error_tip">{{ errmsg }}</span>#}
+          </li>
+          <li>
+            <span class="name">密码：</span>
+            <input class="input1" type="password" name="password">
+{#            <span class="error_tip">{{ errmsg }}</span>#}
+          </li>
+          <li>
+            <span class="name">确认密码：</span>
+            <input class="input1" type="password" name="cPassword">
+{#            <span class="error_tip">{{ errmsg }}</span>#}
+          </li>
+          <li>
+            <span class="name">邮箱：</span>
+            <input class="input1" type="text" name="email">
+{#            <span class="error_tip">{{ errmsg }}</span>#}
+          </li>
+          <li>
+            <input class="submit" type="submit" value="注册">
+            <a class="goLogin" href="/login">去登录</a>
+          </li>
+           <h5>{{ errmsg }}</h5>
+        </ul>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

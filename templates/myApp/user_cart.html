@@ -1,0 +1,225 @@
+{% extends 'myApp/base1.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% block cssjs %}
+        <link rel="stylesheet" type="text/css" href="{% static 'user/css/user_cart.css' %}">
+{#        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>#}
+        <script type="text/javascript" src="{% static 'base/js/jquery-1.12.4.min.js' %}"></script>
+        <script type="text/javascript">
+            $(function () {
+                $('.all_right').children('a').click(function () {
+                    amount = $(this).parent().prev().find('.b1').text()
+                    csrf = $('input[name="csrfmiddlewaretoken"]').val()
+                    params = {'amount': amount, 'csrfmiddlewaretoken': csrf}
+
+                    $.post('/user/order/', params, function (data) {
+                        if (data.res = 2) {
+                            window.open(data.url_pay)
+                        }
+
+                    })
+                })
+
+                function all() {
+                    all_count = 0
+                    all_price = 0
+                    $('.pay').parents('#cart_content').each(function () {
+                        price = $(this).find('.price').find('b').text()
+                        count = $(this).find('.num_show').val()
+                        all_price += parseFloat(price)
+                        all_count += parseInt(count)
+                    })
+                    $('.all_left').find('.b1').text(all_price)
+                    $('.all_left').find('.b2').text(all_count)
+                }
+
+                all()
+
+                $('.add').click(function () {
+
+                    ingre_id = $(this).prev().attr('ingre_id')
+                    count = $(this).prev().val()
+                    csrf = $('input[name="csrfmiddlewaretoken"]').val()
+                    count = parseInt(count) + 1
+                    params = {'ingre_id': ingre_id, 'count': count, 'csrfmiddlewaretoken': csrf}
+
+                    error_update = false
+                    $.post('/update/', params, function (data) {
+                        if (data = 3) {
+                            error_update = true
+                        }
+                        else
+                            error_update = false
+                    })
+                    if (error_update = true) {
+                        count = $(this).prev().val()
+                        count = parseInt(count)+1
+                        $(this).prev().val(count)
+
+                        amount = count * 30
+                        price = 30
+                        $(this).parents('.pay').find('b').text(amount)
+
+                        all()
+                    }
+
+                })
+                $('.minus').click(function () {
+                    ingre_id = $(this).prevAll('.num_show').attr('ingre_id')
+                    count = $(this).prevAll('.num_show').val()
+                    csrf = $('input[name="csrfmiddlewaretoken"]').val()
+                    count = parseInt(count) - 1
+                    params = {'ingre_id': ingre_id, 'count': count, 'csrfmiddlewaretoken': csrf}
+
+                    error_update = false
+                    $.post('/update/', params, function (data) {
+                        if (data = 3) {
+                            error_update = true
+                        }
+                        else
+                        error_update = false
+                    })
+                    if (error_update = true) {
+                        count = $(this).prevAll('.num_show').val()
+                        count = parseInt(count)-1
+                        if (parseInt(count)<=1){
+                            count = 1
+                        }
+                        $(this).prevAll('.num_show').val(count)
+
+                        price = 30
+                        amount = count * 30
+                        $(this).parents('.pay').find('b').text(amount)
+
+                        all()
+                    }
+                })
+                $('.num_show').blur(function () {
+                    ingre_id = $(this).attr('ingre_id')
+                    count = $(this).val()
+                    csrf = $('input[name="csrfmiddlewaretoken"]').val()
+                    count = parseInt(count)
+                    params = {
+                        'ingre_id': ingre_id,
+                        'count': count,
+                        'csrfmiddlewaretoken': csrf
+                    }
+
+                    error_update = false
+                    $.post('/update/', params, function (data) {
+                        if (data = 3) {
+                            error_update = true
+                        }
+                        else
+                        error_update = false
+                    })
+                    if (error_update = true) {
+                        count = $(this).val()
+                        if (isNaN(count) || count.trim().length===0 || parseInt(count)<=0){
+                            count=1
+                        }
+                        $(this).val(count)
+
+                        price = 30
+                        amount = count * 30
+                        $(this).parents('.pay').find('b').text(amount)
+
+                        all()
+                    }
+                })
+                
+                $('.cart_delete').click(function () {
+                    ingre_id = $(this).children().attr('ingre_id');
+                    csrf = $('input[name="csrfmiddlewaretoken"]').val();
+                    params = {'ingre_id': ingre_id, 'csrfmiddlewaretoken': csrf};
+
+                    $.post('/delete/', params, function (data) {
+                        if (data.res == 3){
+                            {#alert(data.res)#}
+                            alert($(this).parents('#cart_content'))
+                        }
+                    })
+                })
+
+            })
+        </script>
+    {% endblock %}
+</head>
+<body>
+    {% block aside %}
+        <div id="top">
+            <div id="img">
+                <img src='{{ user.img.url }}' alt="{{ user.name }}" width="80px" height="80px">
+            </div>
+            <div id="text">
+                <span id="span1">{{ user.name }}</span>
+                <br>
+                <span id="span2">我加入的时间：{{ user.addTime }}</span>
+            </div>
+        </div>
+        <div id="middle">
+            <ul>
+                <li><a href="/user/create/">我的作品</a></li>
+                <li><a href="/user/collection/">我的收藏</a></li>
+                <li><a href="/user/comment/">我的评论</a></li>
+                <li><a href="/user/cart/">我的购物车</a></li>
+                <li><a href="/user/order/">我的订单</a></li>
+            </ul>
+        </div>
+        <div id="bottom">
+            {% if ingres %}
+                {% for ingre in ingres %}
+                    {% csrf_token %}
+                    <div id="cart_content">
+                        <div class="img">
+                            <img src="{{ ingre.img.url }}" width="80px" height="80px">
+                        </div>
+                        <div class="text">
+                            <div class="name">
+                                <a href="#">{{ ingre.name }}</a>
+                            </div>
+                            <div class="pay">
+                                <div class="price">¥<b>{{ ingre.amount }}</b></div>
+                                <div class="count_title">数量</div>
+                                <div class="count_content">
+
+                                    <input class='num_show' ingre_id="{{ ingre.id }}" type="text" value="{{ ingre.count }}" name="count">
+                                    <a class='add' href="javascript:;">+</a>
+                                    <a class='minus' href="javascript:;">-</a>
+                                </div>
+                                <div class="cart_pay">
+                                    <a class="cartPay" href="javascript:;">支付</a>
+                                </div>
+                                <div class="cart_delete">
+                                    <a class="cartDelete" ingre_id="{{ ingre.id }}" href="javascript:;">删除</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+                <div id="all">
+                    <div class="all_left">
+                        <p>合计不含运费：¥<b class="b1">30</b></p>
+                        <p>共计<b class="b2">13</b>件商品</p>
+                    </div>
+                    <div class="all_right">
+                        <a href="javascript:;">去结算</a>
+                    </div>
+                </div>
+            {% else %}
+                <div id="resultNone">
+                    <img src="{% static 'base/img/sorry.jpg' %}" width="960px" height="400px">
+                </div>
+            {% endif %}
+        </div>
+    {% endblock %}
+</body>
+</html>
+
+
+
+

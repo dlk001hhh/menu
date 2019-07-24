@@ -1,0 +1,114 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="icon" href="data:image/ico;base64,aWNv">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'base/css/base.css' %}" />
+
+
+    <script type="text/javascript" charset="UTF-8" src="{% static 'base/js/base.js' %}"></script>
+    {% block cssjs %}
+
+    {% endblock cssjs %}
+</head>
+<body>
+    <header>
+        <div id="header1">
+            <div id="header1_form">
+                <form class="search" method="get" action="/search/" >
+
+                    <input class="input1" type="text" placeholder="请输入菜单/食材/作者" name="q" />
+                    <input class="input2" type="submit" value="搜索" />
+                </form>
+            </div>
+            {% if request.user.is_authenticated %}
+                <div id="header1_a">
+                    <a href="/user/">{{ request.user.username }}</a>
+                    <a href="#">退出登录</a>
+                </div>
+            {% else %}
+                <div id="header1_a">
+                    <a href="/login/">登录</a>
+                    <a href="/register/">注册</a>
+                </div>
+            {% endif %}
+
+
+        </div>
+        <div id="header2">
+            <div id="ul">
+                <ul>
+                    <li><a href="/index/"><strong>首页</strong></a></li>
+                    <li class="li1" onmouseover="appearMenu()" onmouseout="disappearMenu()">
+                        <a href="/menu/"><strong>菜单分类</strong>》》</a>
+                        <div id="header2_menu">
+                            <div id="table">
+                                <ul>
+                                {% for obj1 in dish_cate2 %}
+                                    <li class="li1"><a href="/menu/">{{ obj1.name }}</a></li>
+                                    <li class="li2">
+                                    {% for obj2 in obj1.dish_cate_set.all|slice:":7" %}
+                                        <a href="/menu/{{ obj1.name }}/{{ obj2.name }}/">{{ obj2.name }}</a>
+                                    {% endfor %}
+                                    </li>
+                                {% endfor %}
+                                </ul>
+                            </div>
+                            <div id="header2_menu_img">
+                                <img src="{% static "base/img/6.jpg" %}" width="250px" height="250px">
+                            </div>
+                        </div>
+                    </li>
+                    <li class="li2" onmouseover="appearMate()" onmouseout="disappearMate()">
+                        <a href="/ingre/"><strong>食材大全</strong>》》</a>
+                        <div id="header2_material">
+                            <div id="table2">
+                                <ul>
+                                {% for obj1 in ingre_cate %}
+                                    <li class="li1"><a href="#">{{ obj1.name }}</a></li>
+                                    <li class="li2">
+                                    {% for obj2 in obj1.ingre_set.all|slice:":7" %}
+                                        <a href="#">{{ obj2.name }}</a>
+                                    {% endfor %}
+                                    </li>
+                                {% endfor %}
+                                </ul>
+                            </div>
+                            <div id="header2_material_img">
+                                <img src="{% static "base/img/7.jpg" %}" width="250px" height="250px">
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href="/health/"><strong>健康咨讯</strong></a></li>
+                    <li><a href="/community/"><strong>美食社区</strong></a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <div id="aside">
+        {% block aside %}
+{#            {% for obj in dish_cate2 %}#}
+{#                {% for obj2 in obj.dish_cate_set.all|slice:":2" %}#}
+{#                    {{ obj2.name }}#}
+{#                {% endfor %}#}
+{##}
+{#            {% endfor %}#}
+{#            {% for dish_cate2 in dish_cate2|slice:":1" %}#}
+{#                {{ dish_cate2.name }}#}
+{#            {% endfor %}#}
+
+
+
+
+
+
+        {% endblock aside %}
+    </div>
+    <footer></footer>
+</body>
+</html>

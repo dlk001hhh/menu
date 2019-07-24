@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图片展示</title>
+</head>
+<body>
+    {% for item in imgs %}
+        <img src="{{ item.img_url.url }}"><br/>
+        <p>{{ item.img_url.url }}</p>
+        <p>{{ item }}</p>
+    {% endfor %}
+    <img src="/media/img/111.jpg/" height="100px" width="100px">
+</body>
+</html>

@@ -1,0 +1,88 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+#login{
+    position: absolute;
+    width: 500px;
+    height: 400px;
+    padding: 10px;
+    left: 50%;
+    top: 50%;
+    margin-left: -250px;
+    margin-top: -200px;
+    background-color: #fae8c8;
+}
+
+#log_nav{
+    width: 500px;
+    height: 80px;
+    background-color: white;
+}
+#log_form ul{
+    position: relative;
+    margin-top: 60px;
+    margin-left: 100px;
+}
+#log_form ul h5{
+    position: absolute;
+    top: -30px;
+
+    color: red;
+}
+#log_form li{
+    width: 300px;
+    list-style-type: none;
+    background-color: white;
+}
+#log_form .li1{
+    height: 50px;
+    margin-top: 10px;
+    border-radius: 5px;
+
+}
+#log_form .name{
+    display: inline-block;
+    width: 70px;
+    margin-left: 10px;
+    line-height: 50px;
+}
+#log_form .input1{
+    height: 30px;
+    line-height: 50px;
+    border: none;
+}
+#log_form .li2, #log_form .li3{
+    height: 40px;
+    background-color: #fae8c8;
+}
+#log_form .li2 input{
+    line-height: 40px;
+}
+#log_form .li2 a{
+    line-height: 40px;
+    margin-left: 140px;
+    text-decoration: none;
+    color: black;
+    font-size: x-small;
+}
+#log_form .li3 input{
+    width: 200px;
+    height: 40px;
+    margin-left: 50px;
+    background-color: #c90000;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+#log_form .li3 a{
+    position: absolute;
+    top: -30px;
+    right: 0px;
+    text-decoration: none;
+    color: black;
+}
+
+
+

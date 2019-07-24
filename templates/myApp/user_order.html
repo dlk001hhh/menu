@@ -1,0 +1,85 @@
+{% extends 'myApp/base1.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% block cssjs %}
+        <link rel="stylesheet" type="text/css" href="{% static 'user/css/user_order.css' %}">
+    {% endblock %}
+</head>
+<body>
+    {% block aside %}
+        <div id="top">
+            <div id="img">
+                <img src='{{ user.img.url }}' alt="{{ user.name }}" width="80px" height="80px">
+            </div>
+            <div id="text">
+                <span id="span1">{{ user.name }}</span>
+                <br>
+                <span id="span2">我加入的时间：{{ user.addTime }}</span>
+            </div>
+        </div>
+        <div id="middle">
+            <ul>
+                <li><a href="/user/create/">我的作品</a></li>
+                <li><a href="/user/collection/">我的收藏</a></li>
+                <li><a href="/user/comment/">我的评论</a></li>
+                <li><a href="/user/cart/">我的购物车</a></li>
+                <li><a href="/user/order/">我的订单</a></li>
+            </ul>
+        </div>
+        <div id="bottom">
+            {% for orderObj in order %}
+                <div id="cart_content">
+                    <div class="img">
+                        <img src="{{ orderObj.ingre.img.url }}" width="80px" height="80px">
+                    </div>
+                    <div class="text">
+                        <div class="name">
+                            <a href="#">{{ orderObj.ingre.name }}</a>
+                        </div>
+                        <div class="pay">
+                            <div class="price">价格：¥{{ orderObj.amount }}</div>
+                            <div class="count_title">数量：{{ orderObj.count }}</div>
+                            <div class="cart_pay">
+                                <a class="cartPay"  href="javascript:;">已支付</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% endblock %}
+</body>
+</html>
+
+
+
+
+{#            <div class="list">#}
+{#                <div class="img">#}
+{#                    <a><img src="../img/2.jpg" width="80px" height="80px"></a>#}
+{#                </div>#}
+{#                <div class="text">#}
+{#                    <div class="top">#}
+{#                        <span>鸡肉</span>#}
+{#                        <br>#}
+{#                        <span><small><small>为您挑选优质鸡肉，请放心选购！</small></small></span>#}
+{#                    </div>#}
+{#                    <div class="bottom">#}
+{#                        <div class="price">#}
+{#                            <span>¥30</span>#}
+{#                        </div>#}
+{#                        <div class="number">#}
+{#                            <input class='num_show' type="text" value="1" name="count">#}
+{#                            <a class='add' href="javascript:;">+</a>#}
+{#                            <a class='minus' href="javascript:;">-</a>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+
+
+

@@ -1,0 +1,145 @@
+#menu_nav{
+    width: 1000px;
+    height: 200px;
+    margin-top: 10px;
+}
+#menu_nav1{
+    width: 1000px;
+    height: 50px;
+    background-color: rgba(218, 151, 151, 0.246);
+}
+#menu_nav1 li {
+    float: left;
+    width: 125px;
+    height: 50px;
+    text-align: center;
+    list-style-type: none;
+}
+#menu_nav1 a{
+    line-height: 50px;
+    color: black;
+    text-decoration: none;
+}
+#menu_nav2{
+    width: 720px;
+    height: 150px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 50px;
+    padding-right: 230px;
+    background-color: rgba(255,255,255,0.5);
+}
+#menu_nav2 span{
+    margin-bottom: 15px;
+    font-size: larger;
+    color: #c90000;
+}
+#menu_nav2 ul{
+    width: 720px;
+    height: 90px;
+    margin-top: 10px;
+}
+#menu_nav2  li {
+    float: left;
+    width: 60px;
+    height: 40px;
+    text-align: center;
+    list-style-type: none;
+}
+#menu_nav2 a{
+    line-height: 40px;
+    font-size: smaller;
+    color: black;
+    text-decoration: none;
+}
+
+
+
+#menu_content{
+    margin-top: 30px;
+    background-color: #fae8c8;
+    width: 1000px;
+    /* height: 900px; */
+}
+#content_title{
+    width: 1000px;
+    height: 50px;
+}
+#content_main{
+    width: 1000px;
+}
+
+
+#content_title #lable{
+    float: right;
+    line-height: 50px;
+}
+#content_title label a{
+    margin-right: 5px;
+    text-decoration: none;
+    color: red;
+}
+#content_main>div{
+    /*display: table;*/
+    background-color: white;
+    height: 246px;
+    width: 246px;
+    margin-top: 20px;
+    display: inline-block;
+    vertical-align: top;
+    text-align: center;
+    padding-bottom: 2px;
+}
+.content .lable1 a{
+    font-size: smaller;
+    color: red;
+    text-decoration: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.content .lable2 a{
+    margin-top: 2px;
+    text-decoration: none;
+    color: black;
+}
+#menu_content #page{
+    width: 1000px;
+    height: 50px;
+    margin-top: 20px;
+
+    background-color: #fae8c8;
+
+    display:flex;
+    /*justify-content:center;*/
+    /*align_items:center;*/
+
+}
+#page ul{
+
+    margin: 0px auto;
+    text-align: center;
+}
+#page ul li{
+    float: left;
+    margin-right: 2px;
+
+    background-color: #f5f5f5;
+    list-style-type: none;
+}
+#page .a1{
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+
+}
+#page .a2{
+    width: 80px;
+    height: 50px;
+
+    line-height: 50px;
+}
+#page a{
+    text-decoration: none;
+    color: black;
+}

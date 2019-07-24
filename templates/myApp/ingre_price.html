@@ -1,0 +1,142 @@
+{% extends 'myApp/base1.html' %}
+{% load static %}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    {% block cssjs %}
+        <link rel="stylesheet" type="text/css" href="{% static 'ingre/css/ingre_price.css' %}"/>
+{#        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>#}
+        <script type="text/javascript" src="{% static 'base/js/jquery-1.12.4.min.js' %}"></script>
+        <script type="text/javascript">
+            $(function () {
+                var num_show = $('.num_show')
+
+                $('.add').click(function () {
+                    count = num_show.val()
+                    count = parseInt(count)+1
+                    num_show.val(count)
+                })
+                $('.minus').click(function () {
+                    count = num_show.val()
+                    count = parseInt(count)-1
+                    if (count<=1){
+                        count=1
+                    }
+                    num_show.val(count)
+                })
+                num_show.blur(function () {
+                    count = num_show.val()
+                    if (isNaN(count) || count.trim().length===0 || parseInt(count)<=0){
+                        count=1
+                    }
+                    num_show.val(parseInt(count))
+                })
+
+                $('#cartAdd').click(function () {
+                    count = num_show.val()
+                    ingre_id = $(this).attr('ingre_id')
+                    csrf = $('input[name="csrfmiddlewaretoken"]').val()
+                    params = {
+                            'ingre_id': ingre_id,
+                            'count': count,
+                            'csrfmiddlewaretoken': csrf
+                        }
+                    $.post('/add/', params, function (data) {
+                        if (data.res == 3){
+                            alert('加入成功')
+                        }else
+                            alert('加入失败')
+                    })
+                })
+            })
+        </script>
+
+    {% endblock %}
+</head>
+<body>
+    {% block aside %}
+
+        <div id="top">
+            <div id="img">
+                <img src='{{ ingre.img.url }}' alt="{{ ingre.name }}" width="80px" height="80px">
+            </div>
+            <div id="text">
+                <span id="span1">{{ ingre.name }}</span>
+                <br>
+                <span id="span2">为你介绍猪肉的技巧和营养功效，有122种做法供你参考，同时提供购买需求</span>
+            </div>
+        </div>
+        <div id="middle">
+            <ul>
+                <li><a href="/ingre/price/{{ ingre.name }}">{{ ingre.name }}的购买</a></li>
+                <li><a href="/ingre/show/{{ ingre.name }}">{{ ingre.name }}的做法</a></li>
+                <li><a href="/ingre/descs/{{ ingre.name }}">选购技巧</a></li>
+                <li><a href="/ingre/details/{{ ingre.name }}">营养功效</a></li>
+            </ul>
+        </div>
+        <div id="bottom">
+            <div id="price">
+                <div id="left">
+                    <img src='{{ ingre.img.url }}' alt="{{ ingre.name }}" width="250px" height="250px">
+                </div>
+                <div id="right">
+                    <ul>
+                        <li class="li1">
+                            <label>价格:¥{{ ingre.price }}</label>
+                        </li>
+                        <li class="li1">
+                            <label>销量:30</label>
+                            <label >评价:30</label>
+                        </li>
+                        <li>
+                            <div id="count_title">数量</div>
+                            <div id="count_content">
+                                {% csrf_token %}
+                                <input class='num_show' type="text" value="1" name="count" />
+                                <a class='add' href="javascript:;">+</a>
+                                <a class='minus' href="javascript:;">-</a>
+                            </div>
+                            <div id="cart_add">
+                                <a id="cartAdd" ingre_id="{{ ingre.id }}" href="javascript:;">加入购物车</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="comment">
+                <h2>{{ ingre.name }}的评论</h2>
+                <div class="commentShow">
+                    <div class="commentImg">
+                        <a href="#">
+                        <img src="{% static 'base/img/2.jpg' %}" width="50px", height="50px">
+                        <h5>福建省刚好看见爱上高科技圣诞</h5>
+                        </a>
+                    </div>
+                    <div class="commentText">
+                        <p>福建个卡积分会计法规和空间打开是高科技阿富汗高科技阿凡达换个卡京东方换个卡积分换个卡的交付给哈看的风景好噶咖啡壶噶科技交付给哈看的风景好噶咖啡壶噶科技</p>
+                        <span>2016-02-01 13:50:23</span>
+                    </div>
+                </div>
+                <div class="commentShow">
+                    <div class="commentImg">
+                        <a href="#">
+                            <img src="{% static 'base/img/2.jpg' %}" width="50px", height="50px">
+                            <h5>福建省刚好看见爱上高科技圣诞</h5>
+                        </a>
+                    </div>
+                    <div class="commentText">
+                        <p>福建省刚好看见爱上高科技圣诞节过后会计法规和空间打开是高科技阿富汗高科技阿凡达换个卡京东方换个卡积分换个卡的福建省刚好看见爱上高科技圣诞节过后会计法规和空间打开是高科技阿富汗高科技阿凡达换个卡京东方换个卡积分换个卡的交付给哈看的风景好噶咖啡壶噶科技交付给哈看的风景好噶咖啡壶噶科技</p>
+                        <span>2016-02-01 13:50:23</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+
+</body>
+</html>

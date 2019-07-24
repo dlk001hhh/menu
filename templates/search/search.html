@@ -1,0 +1,67 @@
+{% extends 'myApp/base1.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        {% block cssjs %}
+            <link rel="stylesheet" type="text/css" href="{% static 'index/css/search.css' %}">
+        {% endblock %}
+    </head>
+    <body>
+        {% block aside %}
+            <div id="bottom">
+                {% if page %}
+                    <div id="menu_content">
+                        <h3>搜索结果如下：</h3>
+
+                        <div id="content_main">
+                            {% for item in page %}
+                                <div class="content">
+                                    <div><a href="/dish/{{ item.object.id }}"><img src={{ item.object.img.url }} width="246px" height="200px"></a></div>
+                                    <label class="lable1"><a href="/dish/{{ item.object.id }}">{{ item.object.user }}</a></label>
+                                    <br>
+                                    <label class="lable2"><a href="/dish/{{ item.object.id }}">{{ item.object.name }}</a></label>
+                                </div>
+                            {% endfor %}
+                        </div>
+    {#                    <h3>{{ page.number }}</h3>#}
+    {#                    <h3>{{ page.has_previous }}</h3>#}
+    {#                    <h3>{{ page.has_next }}</h3>#}
+    {#                    <h3>{{ page.previous_page_number }}</h3>#}
+    {#                    <h3>{{ page.next_page_number }}</h3>#}
+    {#                    <h3>{{ paginator.count }}</h3>#}
+    {#                    <h3>{{ paginator.page_range }}</h3>#}
+    {#                    <h3>{{ paginator.num_pages }}</h3>#}
+                        <div id="page">
+                            <ul>
+                                {% if page.number != 1 %}
+                                    <li class='a2'><a  href="/search?q={{ query }}&page={{ page.previous_page_number }}">上一页</a></li>
+                                {% endif %}
+                                {% for pindex in paginator.page_range %}
+                                    {% if pindex == paginator.number %}
+                                        <li class='a1'>{{ pindex }}</li>
+                                    {% else %}
+                                        <li class='a1'><a href="/search?q={{ query }}&page={{ pindex }}">{{ pindex }}</a></li>
+                                    {% endif %}
+                                {% endfor %}
+                                {% if page.number != paginator.num_pages %}
+                                    <li class='a2'><a  href="/search?q={{ query }}&page={{ page.next_page_number }}">下一页</a></li>
+                                {% endif %}
+                            </ul>
+                        </div>
+
+                    </div>
+                {% else %}
+                    <div id="resultNone">
+                        <img src="{% static 'base/img/sorry.jpg' %}" width="960px" height="400px">
+                    </div>
+                {% endif %}
+
+
+            </div>
+
+        {% endblock %}
+    </body>
+</html>

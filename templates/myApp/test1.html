@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>jQuery实现购物车物品数量的加减</title>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+<script>
+$(function(){
+    var t = $("#num_show");
+    $("#add").click(function(){
+        t.val(parseInt(t.val())+1);
+        $("#min").removeAttr("disabled");                 //当按加1时，解除$("#min")不可读状态
+        setTotal();
+    })
+    $("#min").click(function(){
+               if (parseInt(t.val())>1) {                     //判断数量值大于1时才可以减少
+                t.val(parseInt(t.val())-1)
+                }else{
+                $("#min").attr("disabled","disabled")        //当$("#min")为1时，$("#min")不可读状态
+               }
+        setTotal();
+    })
+    function setTotal(){
+        $("#total").html((parseInt(t.val())*3.95).toFixed(2));
+    }
+    setTotal();
+})
+</script>
+</head>
+<body>
+<p>单价：1.23</p>
+<input id="min" name="" type="button" value="-" />
+<input id="num_show" name="" type="text" value="1" />
+<input id="add" name="" type="button" value="+" />
+<p>总价：<label id="total"></label></p>
+</body>
+</html>

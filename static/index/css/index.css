@@ -1,0 +1,50 @@
+
+h2{
+    width: 1000px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+}
+h4{
+    width: 1000px;
+    height: 30px;
+    line-height: 30px;
+    color: #c90000;
+}
+#index_menu, #index_ingre, #index_article{
+    width: 1000px;
+    height: 300px;
+    margin-bottom: 100px;
+    background-color: white;
+}
+
+#index .content{
+    width: 992px;
+    height: 280px;
+    padding: 10px 4px 10px 4px;
+
+} 
+#index dl{
+    float: left;
+    width: 240px;
+    height: 280px;
+    margin-left: 4px;
+    margin-right: 4px;
+}
+#index dt{
+    width: 240px;
+    height: 240px;
+}
+#index dd{
+    width: 240px;
+    height: 40px;
+    background-color: #c90000;
+    text-align: center;
+}
+#index dd a{
+    line-height: 40px;
+    color: black;
+    text-decoration: none;
+    font-size: smaller;
+    color: white;
+} 

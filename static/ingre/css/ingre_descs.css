@@ -1,0 +1,69 @@
+#top{
+    margin-top: 20px;
+
+    width: 1000px;
+    height: 80px;
+
+    background-color: white;
+}
+#img{
+    float: left;
+}
+#text{
+    float: left;
+    margin-left: 20px;
+    padding:10px;
+}
+#span2{
+    font-size: smaller
+}
+
+
+#middle{
+    margin-top: 50px;
+    width: 1000px;
+    height: 50px;
+}
+#middle li{
+    float: left;
+    text-align: center;
+
+    width: 100px;
+    height: 50px;
+
+    list-style-type: none;
+    background-color: white;
+}
+#middle a{
+    line-height: 50px;
+
+    width: 80px;
+    height: 50px;
+
+    text-decoration: none;
+    color: black;
+
+}
+#middle li:hover{
+    color: white;
+    background-color: red;
+}
+
+#bottom{
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    background-color: white;
+}
+
+#ingre_descs{
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    background-color: white;
+
+}
+#ingre_descs p{
+    padding: 10px;
+}
+

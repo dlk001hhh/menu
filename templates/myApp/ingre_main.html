@@ -1,0 +1,77 @@
+{% extends 'myApp/base1.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    {% block cssjs %}
+        <link rel="stylesheet" type="text/css" href="{% static 'ingre/css/ingre_main.css' %}" />
+    {% endblock cssjs %}
+</head>
+<body>
+    {% block aside %}
+
+        <div id="menu_nav">
+            <div id="menu_nav1">
+                <ul>
+                    {% for cateObj in ingre_cateAll %}
+                        <li><a href="#">{{ cateObj.name }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div id="menu_nav2">
+                    <span>{{ ingre_cate.name }}</span>
+                <br>
+                <ul>
+                    {% for cateObj in ingre_cate %}
+                        <li><a href="/menu1/{{ cate2Name }}/{{ cateObj.name }}">{{ cateObj.name }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+        <div id="menu_content">
+            <div id="content_title">
+                <div id="lable">
+                    <label ><a href="#">最新</a></label>
+                    <label ><a href="#">最热</a></label>
+                </div>
+            </div>
+            <div id="content_main">
+                {% for dishObj in page %}
+                    <div class="content">
+                        <div><a href="/dish/{{ dishObj.id }}"><img src={{ dishObj.img.url }} width="246px" height="200px"></a></div>
+                        <label class="lable1"><a href="/dish/{{ dishObj.id }}">{{ dishObj.user }}</a></label>
+                        <br>
+                        <label class="lable2"><a href="/dish/{{ dishObj.id }}">{{ dishObj.name }}</a></label>
+                    </div>
+                {% endfor %}
+            </div>
+            <div id="page">
+                <ul>
+                    <li class='a2'><a  href="#">上一页</a></li>
+                    {% for number in page_list %}
+                        {% if num == number %}
+                            <li class='a1'>{{ num }}</li>
+                        {% else %}
+                            <li class='a1'><a href="/menu1/{{ cate2Name}}/{{ cateName }}/{{ number }}">{{ number }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+                    <li class='a2'><a  href="#">下一页</a></li>
+                </ul>
+            </div>
+        </div>
+
+{#        {% if "{{ judgePre }}" == 1 %}#}
+{#            <h>11111111111111</h>#}
+{#            {% if judgeAft == 1 %}#}
+{#                <h>2222222222222</h>#}
+{#            {% endif %}#}
+{#        {% endif %}#}
+    {% endblock aside %}
+
+</body>
+</html>

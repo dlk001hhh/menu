@@ -1,0 +1,55 @@
+{% extends 'myApp/base1.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% block cssjs %}
+        <link rel="stylesheet" type="text/css" href="{% static 'user/css/user_comment.css' %}">
+    {% endblock %}
+</head>
+<body>
+    {% block aside %}
+        <div id="top">
+            <div id="img">
+                <img src='{{ user.img.url }}' alt="{{ user.name }}" width="80px" height="80px">
+            </div>
+            <div id="text">
+                <span id="span1">{{ user.name }}</span>
+                <br>
+                <span id="span2">我加入的时间：{{ user.addTime }}</span>
+            </div>
+        </div>
+        <div id="middle">
+            <ul>
+                <li><a href="/user/create/">我的作品</a></li>
+                <li><a href="/user/collection/">我的收藏</a></li>
+                <li><a href="/user/comment/">我的评论</a></li>
+                <li><a href="/user/cart/">我的购物车</a></li>
+                <li><a href="/user/order/">我的订单</a></li>
+            </ul>
+        </div>
+        <div id="bottom">
+            <div id="commentShow">
+                <ul>
+                    {% for comment in commentAll %}
+                        <li>
+                            <a href="#">
+                                <img src="{{ comment.dish.img.url}}" width="50px" height="50px">
+                                <h5>{{ comment.dish.name }}</h5>
+                            </a>
+                            <div id="commentShow1">
+                                <p>{{ comment.comment }}</p>
+                                <span></span>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+        </div>
+
+    {% endblock %}
+</body>
+</html>

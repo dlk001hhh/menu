@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            var num_show = $('.num_show')
+            $('.add').click(function () {
+                count = num_show.val()
+                count = parseInt(count)+1
+                num_show.val(count)
+            })
+            $('.minus').click(function () {
+                count = num_show.val()
+                count = parseInt(count)-1
+                if (count<=1){
+                    count=1
+                }
+                num_show.val(count)
+            })
+        })
+    </script>
+</head>
+<body>
+    <input class='num_show' type="text" value="1" name="count" />
+    <a class='add' href="javascript:;">+</a>
+    <a class='minus' href="javascript:;">-</a>
+</body>
+</html>
+
+{#  <script type="text/javascript" src="{% static 'base/js/jquery.min.js' %}"></script>#}
+{#        <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">#}
+{#        </script>#}
+{#        <script type="text/javascript" src="{% static 'base/js/count.js' %}"></script>#}
+{#        <script type="text/javascript" src="{% static 'base/js/cart_add.js' %}"></script>#}
+{#        <script type="text/javascript">#}
+{#        $(function () {#}
+{#            var num_show = $('.num_show')#}
+            {# 数量增加 #}
+{#            $('.add').click(function () {#}
+{##}
+{#                count = num_show.val()#}
+{#                count = parseInt(count) + 1#}
+{#                num_show.val(count)#}
+{#            })#}
+{##}
+            {# 数量减少 #}
+{#            $('.minus').click(function () {#}
+{#                count = num_show.val()#}
+{#                count = parseInt(count) - 1#}
+{#                if (count<=1){#}
+{#                    count = 1#}
+{#                }#}
+{#                num_show.val(count)#}
+{#            })#}
+{##}
+            {# 数量手动输入 #}
+{#            num_show.blur(function () {#}
+{#                count = $(this).val()#}
+{#                if (isNaN(count) || count.trim().length==0 || parseInt(count)<=0){#}
+{#                    count = 1#}
+{#                }#}
+{#                $(this).val(parseInt(count))#}
+{#            })#}
+{##}
+            {# 点击加入购物车，商品数据传输 #}
+{#            $('#cartAdd').click(function () {#}
+{#                count = $('.num_show').val()#}
+{#                ingre_id = $(this).attr('ingre_id')#}
+{#                params = {'count': count, 'ingre_id': ingre_id}#}
+{#                $.post('/cart/add/', params, function (data) {#}
+{#                    if (data.res==3){#}
+{#                        alert('添加成功')#}
+{#                    }#}
+{#                })#}
+{#            })#}
+{#        })#}
+        </script>

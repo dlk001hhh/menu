@@ -1,0 +1,29 @@
+{% extends 'myApp/base1.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    {% block cssjs %}
+        <link rel="stylesheet" type="text/css" href="{% static 'health/css/health_article.css' %}" />
+    {% endblock cssjs %}
+</head>
+<body>
+    {% block aside %}
+        <div id="health_title">
+            <h2>{{ article.title }}</h2>
+        </div>
+        <div id="health_content">
+            <p class="img"><img src={{ article.img.url }} width="960px" height="300px"></p>
+            {% for detail in details %}
+                <p class="text">{{ detail }}</p>
+            {% endfor %}
+{#            <p class="text">又到了要露肉的季节，很多注意身材的美眉开始戒肉减油，多吃蔬菜和水果，开启清淡饮食模式。但是…蔬菜水果不好吃怎么办？这时候丘比老司机就要来指导大家了！让没有味道的蔬菜水果变美味可口的重点就是，你需要拥有一瓶丘比沙拉汁！（不，是很多瓶丘比沙拉汁！）</p>#}
+        </div>
+    {% endblock aside %}
+
+</body>
+</html>

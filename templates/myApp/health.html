@@ -1,0 +1,65 @@
+{% extends 'myApp/base1.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    {% block cssjs %}
+        <link rel="stylesheet" type="text/css" href="{% static 'health/css/health.css' %}" />
+    {% endblock cssjs %}
+</head>
+<body>
+    {% block aside %}
+        <div id="health_nav">
+                {% for obj in article_cateAll %}
+                    <div class="icon">
+                        <a href="/health/{{ obj.id }}">
+                            <img src="{{ obj.img.url }}" width="200px" height="200px">
+                            <span>{{ obj.name }}</span>
+                        </a>
+                    </div>
+                {% endfor %}
+        </div>
+
+        <h2>{{ article_cate.name }}</h2>
+
+        <div id="menu_content">
+            <div id="content_title">
+                <div id="lable">
+                    <label ><a href="#">最新</a></label>
+                    <label ><a href="#">最热</a></label>
+                </div>
+            </div>
+            <div id="content_main">
+                {% for artObj in article %}
+                    <div class="content">
+                        <div><a href="/health/article/{{ artObj.id }}"><img src={{ artObj.img.url }} width="246px" height="200px"></a></div>
+                        <label class="lable2"><a href="/health/article/{{ artObj.id }}">{{ artObj.title }}</a></label>
+                    </div>
+                {% endfor %}
+            </div>
+            <div id="page">
+                <ul>
+                    {% if article.number != 1 %}
+                        <li class='a2'><a  href="/health/{{ article.previous_page_number }}">上一页</a></li>
+                    {% endif %}
+                    {% for num in page_list %}
+                        {% if num == article.number %}
+                            <li class='a1'>{{ num }}</li>
+                        {% else %}
+                            <li class='a1'><a href="/health/{{ id }}/{{ num }}">{{ num }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+                    {% if article.number != paginator.num_pages %}
+                        <li class='a2'><a  href="/health/{{ article.next_page_number }}">下一页</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    {% endblock aside %}
+
+</body>
+</html>

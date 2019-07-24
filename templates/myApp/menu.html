@@ -1,0 +1,76 @@
+{% extends 'myApp/base1.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    {% block cssjs %}
+        <link rel="stylesheet" type="text/css" href="{% static 'menu/css/menu.css' %}" />
+    {% endblock cssjs %}
+</head>
+<body>
+    {% block aside %}
+
+        <div id="menu_nav">
+            <div id="menu_nav1">
+                <ul>
+                    {% for cate2Obj in cate2All %}
+                        <li><a href="/menu/{{ cate2Obj.name }}">{{ cate2Obj.name }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div id="menu_nav2">
+                    <span>{{ cate2Name }}</span>
+                <br>
+                <ul>
+                    {% for cateObj in cateAll %}
+                        <li><a href="/menu/{{ cate2Name }}/{{ cateObj.name }}">{{ cateObj.name }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+        <div id="menu_content">
+            <div id="content_title">
+                <div id="lable">
+                    <label ><a href="#">最新</a></label>
+                    <label ><a href="#">最热</a></label>
+                </div>
+            </div>
+            <div id="content_main">
+                {% for dishObj in page %}
+                    <div class="content">
+                        <div><a href="/dish/{{ dishObj.id }}"><img src={{ dishObj.img.url }} width="246px" height="200px"></a></div>
+                        <label class="lable1"><a href="/dish/{{ dishObj.id }}">{{ dishObj.user }}</a></label>
+                        <br>
+                        <label class="lable2"><a href="/dish/{{ dishObj.id }}">{{ dishObj.name|slice:":10" }}</a></label>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <div id="page">
+                <ul>
+                    {% if page.number != 1 %}
+                        <li class='a2'><a  href="/menu/{{ cate2Name}}/{{ cateName }}/{{ page.previous_page_number }}">上一页</a></li>
+                    {% endif %}
+                    {% for num in page_list %}
+                        {% if num == page.number %}
+                            <li class='a1'>{{ num }}</li>
+                        {% else %}
+                            <li class='a1'><a href="/menu/{{ cate2Name}}/{{ cateName }}/{{ num }}">{{ num }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+                    {% if page.number != paginator.num_pages %}
+                        <li class='a2'><a  href="/menu/{{ cate2Name}}/{{ cateName }}/{{ page.next_page_number }}">下一页</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+
+    {% endblock aside %}
+
+</body>
+</html>

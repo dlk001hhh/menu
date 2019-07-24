@@ -1,0 +1,69 @@
+{% extends 'myApp/base1.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% block cssjs %}
+        <link rel="stylesheet" type="text/css" href="{% static 'ingre/css/ingre_show.css' %}">
+    {% endblock %}
+</head>
+<body>
+    {% block aside %}
+        <div id="top">
+            <div id="img">
+                <img src='{{ ingre.img.url }}' alt="{{ ingre.name }}" width="80px" height="80px">
+            </div>
+            <div id="text">
+                <span id="span1">{{ ingre.name }}</span>
+                <br>
+                <span id="span2">为你介绍猪肉的技巧和营养功效，有122种做法供你参考，同时提供购买需求</span>
+            </div>
+        </div>
+        <div id="middle">
+            <ul>
+                <li><a href="/ingre/price/{{ ingre.name }}">{{ ingre.name }}的购买</a></li>
+                <li><a href="/ingre/show/{{ ingre.name }}">{{ ingre.name }}的做法</a></li>
+                <li><a href="/ingre/descs/{{ ingre.name }}">选购技巧</a></li>
+                <li><a href="/ingre/details/{{ ingre.name }}">营养功效</a></li>
+            </ul>
+        </div>
+        <div id="bottom">
+
+            <div id="menu_content">
+                <div id="content_title">
+                    <div id="lable">
+                        <label ><a href="#">最新</a></label>
+                        <label ><a href="#">最热</a></label>
+                    </div>
+                </div>
+                <div id="content_main">
+                    {% for dishObj in dish %}
+                        <div class="content">
+                            <div><a href="/dish/{{ dishObj.id }}"><img src={{ dishObj.img.url }} width="246px" height="200px"></a></div>
+                            <label class="lable1"><a href="/dish/{{ dishObj.id }}">{{ dishObj.user }}</a></label>
+                            <br>
+                            <label class="lable2"><a href="/dish/{{ dishObj.id }}">{{ dishObj.name }}</a></label>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div id="page">
+                    <ul>
+                        <li class='a2'><a  href="#">上一页</a></li>
+                        {% for num in page_list %}
+                            {% if num == footballer.number %}
+                                <li class='a1'>{{ num }}</li>
+                            {% else %}
+                                <li class='a1'><a href="/menu1/{{ cate2Name}}/{{ cateName }}/{{ num }}">{{ num }}</a></li>
+                            {% endif %}
+                        {% endfor %}
+                        <li class='a2'><a  href="#">下一页</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    {% endblock %}
+</body>
+</html>

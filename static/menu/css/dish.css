@@ -1,0 +1,208 @@
+h2{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+h3{
+    background-color: red;
+    color: white;
+}
+#description{
+    width: 1000px;
+    height: 400px;
+    margin-top: 20px;
+    background-color: #fdf6f6;
+}
+#description #img{
+    float: left;
+    width: 300px;
+    height: 400px;
+}
+#description #introduce{
+    float: left;
+    width: 700px;
+    height: 400px;
+}
+#name{
+    width: 700px;
+    height: 50px;
+    position: relative;
+}
+#name span{
+    margin-left: 20px;
+    margin-top: 10px;
+    font-size: x-large
+}
+#name a{
+    position: absolute;
+    z-index: 100;
+    left: 600px;
+}
+#other{
+    width: 700px;
+    height: 160px;
+}
+#other li{
+    width: 350px;
+    height: 79px;
+    float: left;
+    list-style-type: none;
+    background-color: white;
+}
+#li1,#li2{
+    border-bottom: 1px solid #fdf6f6;
+}
+#li3,#li4{
+    border-top: 1px solid #fdf6f6;
+}
+#other .span1{
+    line-height: 79px;
+    margin-left: 20px;
+    margin-right: 180px;
+}
+#other .span2{
+    line-height: 79px;
+    font-size: larger;
+    color: red;
+}
+#word{
+    width: 700px;
+    height: 190px;
+    overflow: auto;
+}
+#word p{
+    padding: 20px;
+    text-indent: 30px;
+    overflow: auto;
+}
+
+#ingredient{
+    width: 1000px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    background-color:#fdf6f6;
+}
+
+#ingredient li{
+    display: inline-block;
+    vertical-align: top;
+    width: 460px;
+    height: 50px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: white;
+}
+
+#ingredient li .text{
+    display: inline-block;
+    width: 150px;
+    height: 50px;
+    margin-left: 10px;
+    line-height: 50px;
+    text-decoration: none;
+    color: black
+}
+#ingredient li .img{
+    float: right;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+#ingredient li>span{
+}
+#ingredient li{
+    margin-left: 26px;
+}
+/*#ingredient .li2{*/
+    /*margin-left: 18px;*/
+    /*margin-left: 20px;*/
+/*}*/
+
+
+
+#stepAddi{
+    position: relative;
+    background-color: #fdf6f6;
+    margin-top: 50px;
+    padding: 30px;
+
+}
+.step{
+    margin-bottom: 30px;
+}
+#stepAddi .step .img{
+    display: inline-block;
+    width: 300px;
+    height: 300px;
+    margin-top: 10px;
+    vertical-align: top;
+}
+#stepAddi .step .text{
+    display: inline-block;
+    width: 400px;
+    height: 280px;
+    vertical-align: top;
+    margin-top: 10px;
+    padding: 10px;
+    text-indent: 25px;
+    background-color: #ffffff;
+
+    border: 1px solid #eee;
+}
+
+#addition p{
+    width: 700px;
+    padding: 10px;
+    text-indent: 25px;
+    background-color: #ffffff;
+    border: 1px solid #eee;
+}
+
+
+#comment{
+    background-color: #fdf6f6;
+    margin-top: 50px;
+    padding: 30px;
+}
+#comment form{
+    display: inline-block;
+    vertical-align: top;
+}
+#comment textarea{
+    width: 500px;
+    height: 200px;
+    padding: 10px;
+}
+#comment input{
+    width: 80px;
+    height: 40px;
+    display: block;
+    border-radius: 5px;
+    background-color: red;
+    color: white;
+}
+
+#commentShow li{
+    list-style-type: none;
+    margin-top: 50px;
+}
+#commentShow>ul>li>a{
+    display: inline-block;
+    vertical-align: top;
+    text-decoration: none;
+}
+#commentShow1{
+    display: inline-block;
+    vertical-align: top;
+    width: 610px;
+    text-indent: 25px;
+    padding-top: 10px;
+    padding-left: 10px;
+    border: 1px solid #eee;
+    background-color: white;
+}
+#commentShow1>span{
+    float: right;
+    margin-top: 20px;
+    margin-bottom: 0px;
+    font-size: smaller;
+    color: #666;
+}

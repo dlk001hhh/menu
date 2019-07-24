@@ -1,0 +1,160 @@
+{% extends 'myApp/base1.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    {% block cssjs %}
+
+        <link rel="stylesheet" type="text/css" href="{% static 'menu/css/dish.css' %}" />
+{#        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>#}
+        <script type="text/javascript" src="{% static 'base/js/jquery-1.12.4.min.js' %}"></script>
+        <script type="text/javascript">
+            $(function () {
+                $('#a').click(function () {
+                    dish_id = $(this).attr('dish_id')
+                    csrf = $('input[name="csrfmiddlewaretoken"]').val()
+                    params = {
+                        'dish_id': dish_id,
+                        'csrfmiddlewaretoken': csrf
+                    }
+
+                    $.post('/user/collection/', params, function (data) {
+                        if(data.res == 1){
+                            $('#a').find('img').attr('src', "{% static 'menu/img/collect (2).png' %}")
+                        }else {
+                            $('#a').find('img').attr('src', "{% static 'menu/img/collect (1).png' %}")
+                        }
+
+                    })
+                })
+            })
+        </script>
+    {% endblock cssjs %}
+</head>
+<body>
+
+
+    {% block aside %}
+        <div id="description">
+            <div id="img">
+                <img src="{{ dish.img.url }}" width="300px" height="400">
+            </div>
+            <div id="introduce">
+                <div id="name" class="div">
+                    {% csrf_token %}
+                    <span>{{ dish.name }}</span>
+                    {% if dish.id in dish_id_list %}
+                        <a id="a" href="javascript:;" dish_id="{{ dish.id }}"><img src="{% static 'menu/img/collect (2).png' %}" width="45px" height="45px;"></a>
+                    {% else %}
+                        <a id="a" href="javascript:;" dish_id="{{ dish.id }}"><img src="{% static 'menu/img/collect (1).png' %}" width="45px" height="45px;"></a>
+                    {% endif %}
+                </div>
+                <div id="other" class="div">
+                    <ul>
+                        <li id="li1">
+                            <span class="span1">工艺</span>
+                            <span class="span2">{{ dish.skill }}</span>
+                        </li>
+                        <li id="li2">
+                            <span class="span1">口味</span>
+                            <span class="span2">{{ dish.taste }}</span>
+                        </li>
+                        <li id="li3">
+                            <span class="span1">难度</span>
+                            <span class="span2">{{ dish.degree }}</span>
+                        </li>
+                        <li id="li4">
+                            <span class="span1">时间</span>
+                            <span class="span2">{{ dish.time }}</span>
+                        </li>
+                    </ul>
+                </div>
+                <div id="word" class="div">
+                    <p>
+                        {{ dish.descs }}
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div id="ingredient">
+            <div id="main">
+                <h3>主料</h3>
+                <ul>
+                    {% for mainObj in main %}
+                        <li>
+                            <a class="text" href="{% url 'myApp:ingre_price2' mainObj.name %}">{{ mainObj.name }}</a>
+                            <span>{{ mainObj.number }}</span>
+                            <a class="img" href="{% url 'myApp:ingre_price2' mainObj.name %}"><img src="{% static 'menu/img/shopping1.png' %}" width="50px", height="30px", alt="加入购物车"></a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div id="auxi">
+                <h3>辅料</h3>
+                <ul>
+                    {% for auxiObj in auxi %}
+                        <li>
+                            <a class="text" href="{% url 'myApp:ingre_price2' auxiObj.name %}">{{ auxiObj.name }}</a>
+                            <span>{{ auxiObj.number }}</span>
+                            <a class="img" href="{% url 'myApp:ingre_price2' auxiObj.name %}"><img src="{% static 'menu/img/shopping1.png' %}" width="50px", height="30px", alt="加入购物车"></a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+        <div id="stepAddi">
+            <h2>{{ dish.name }}的做法</h2>
+            {% for stepObj in step %}
+                <div class="step">
+                <div class="img"><img src="{{ stepObj.imgStep.url }}" width="300px" height="300px"></div>
+                <div class="text">
+                    <h4><em>{{ stepObj.textStep1 }}</em></h4>
+                    <p>{{ stepObj.textStep2 }}</p>
+                </div>
+            </div>
+            {% endfor %}
+            <h2>小窍门</h2>
+            <div id="addition">
+                <p>{{ dish.details }}</p>
+            </div>
+        </div>
+        <div id="comment">
+            <h2>{{ dish.name }}的评论</h2>
+
+            <div class="comment">
+                {% if request.user.is_authenticated %}
+                    <a href="#"><img src="{{ user.img.url }}" width="50px" height="50px"></a>
+                    <form method="post" action="{% url 'myApp:dish' dish.id %}">
+                        {% csrf_token %}
+                        <textarea placeholder="说点什么" name="comment"></textarea>
+                        <input type="hidden" name="dish_id" value="{{ dish.id }}"/>
+                        <input type="submit" name="submit" value="提交" />
+                    </form>
+                {% endif %}
+                <div id="commentShow">
+                    <ul>
+                        {% for comment in commentAll %}
+                            <li>
+                                <a href="#">
+                                    <img src="{{ comment.user.img.url}}" width="50px" height="50px">
+                                    <h5>{{ comment.user.name }}</h5>
+                                </a>
+                                <div id="commentShow1">
+                                    <p>{{ comment.comment }}</p>
+                                    <span>{{ comment.addTime }}</span>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    {% endblock aside %}
+</body>
+</html>
